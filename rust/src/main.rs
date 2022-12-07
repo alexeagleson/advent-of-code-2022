@@ -4,6 +4,8 @@ mod day_3;
 mod day_4;
 mod day_5;
 mod day_6;
+mod day_7;
+
 
 use crate::day_1::{day_1_part_1, day_1_part_2, input::INPUT_DAY_1};
 use crate::day_2::{day_2_part_1, day_2_part_2, input::INPUT_DAY_2};
@@ -14,6 +16,8 @@ use crate::day_5::{
     input::{INPUT_DAY_5_MOVES, INPUT_DAY_5_STACKS},
 };
 use crate::day_6::{day_6_part_1, day_6_part_2, input::INPUT_DAY_6};
+use crate::day_7::{day_7_part_1, day_7_part_2, input::INPUT_DAY_7};
+
 
 fn main() {
     let d1p1 = day_1_part_1(INPUT_DAY_1);
@@ -51,4 +55,10 @@ fn main() {
 
     dbg!("{}", d6p1);
     dbg!("{}", d6p2);
+
+    let d7p1 = day_7_part_1(INPUT_DAY_7);
+    let d7p2 = day_7_part_2(INPUT_DAY_7);
+
+    dbg!("{}", d7p1);
+    dbg!("{}", d7p2);
 }
