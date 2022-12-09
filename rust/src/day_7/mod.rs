@@ -33,12 +33,12 @@ pub fn day_7_part_2(input: &'static str) -> String {
 
     let minimum_delete_size = SPACE_REQUIRED - space_available;
 
-    dbg!(
-        "{} {} {}",
-        space_available,
-        SPACE_REQUIRED,
-        minimum_delete_size
-    );
+    // dbg!(
+    //     "{} {} {}",
+    //     space_available,
+    //     SPACE_REQUIRED,
+    //     minimum_delete_size
+    // );
 
     let mut valid_options = file_system
         .values()
@@ -55,7 +55,7 @@ pub fn day_7_part_2(input: &'static str) -> String {
 
     valid_options.sort();
 
-    dbg!("{:?}", &valid_options);
+    // dbg!("{:?}", &valid_options);
 
     valid_options
         .get(0)
