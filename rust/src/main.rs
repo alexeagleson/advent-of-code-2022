@@ -1,4 +1,5 @@
 mod day_1;
+mod day_10;
 mod day_2;
 mod day_3;
 mod day_4;
@@ -9,6 +10,7 @@ mod day_8;
 mod day_9;
 
 use crate::day_1::{day_1_part_1, day_1_part_2, input::INPUT_DAY_1};
+use crate::day_10::{day_10_part_1, day_10_part_2, input::INPUT_DAY_10};
 use crate::day_2::{day_2_part_1, day_2_part_2, input::INPUT_DAY_2};
 use crate::day_3::{day_3_part_1, day_3_part_2, input::INPUT_DAY_3};
 use crate::day_4::{day_4_part_1, day_4_part_2, input::INPUT_DAY_4};
@@ -75,4 +77,10 @@ fn main() {
 
     dbg!("{}", d9p1);
     dbg!("{}", d9p2);
+
+    let d10p1 = day_10_part_1(INPUT_DAY_10);
+    let d10p2 = day_10_part_2(INPUT_DAY_10);
+
+    dbg!("{}", d10p1);
+    dbg!("{}", d10p2);
 }
