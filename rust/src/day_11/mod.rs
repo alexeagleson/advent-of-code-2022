@@ -1,7 +1,5 @@
 use std::collections::VecDeque;
 
-use num_bigint::BigUint;
-
 pub mod input;
 
 #[derive(Debug, PartialEq)]
@@ -13,13 +11,13 @@ enum OperationType {
 #[derive(Debug, PartialEq)]
 enum OperationValue {
     Old,
-    Value(BigUint),
+    Value(u128),
 }
 
 #[derive(Debug, PartialEq)]
 struct Monkey {
     index: usize,
-    items: VecDeque<BigUint>,
+    items: VecDeque<u128>,
     operation_type: OperationType,
     operation_value: OperationValue,
     divisible_by: u128,
@@ -69,10 +67,7 @@ fn parse_input(input: &str) -> ProcessedInput {
 
         let items = monkey_items_nums_string
             .split(", ")
-            .map(|item| {
-                let value = u32::from_str_radix(item, 10).expect("Failed to parse");
-                BigUint::from(value)
-            })
+            .map(|item| u128::from_str_radix(item, 10).expect("Failed to parse"))
             .collect::<VecDeque<_>>();
 
         // Line 3
@@ -91,8 +86,8 @@ fn parse_input(input: &str) -> ProcessedInput {
         let operation_value: OperationValue = match operation_value_string {
             "old" => OperationValue::Old,
             val => {
-                let value = u32::from_str_radix(val, 10).unwrap();
-                OperationValue::Value(BigUint::from(value))
+                let value = u128::from_str_radix(val, 10).unwrap();
+                OperationValue::Value(value)
             }
         };
 
@@ -150,13 +145,12 @@ fn handle_processed_input(
                 };
 
                 let new_value_after_relief = if has_ability_to_feel_relief {
-                    &new_value_after_inspection / 3 as u32
+                    &new_value_after_inspection / 3
                 } else {
                     new_value_after_inspection
                 };
 
-                let throw_target_test =
-                    &new_value_after_relief % monkey.divisible_by == BigUint::from(0 as u32);
+                let throw_target_test = &new_value_after_relief % monkey.divisible_by == 0;
 
                 let monkey_throw_true = monkey.monkey_throw_true;
                 let monkey_throw_false = monkey.monkey_throw_false;
@@ -204,8 +198,6 @@ pub fn day_11_part_1(input: &'static str) -> String {
         handle_processed_input(&mut processed_input, true, baseline);
     }
 
-    // dbg!("{:?}", &processed_input);
-
     let monkey_business = monkey_business(&processed_input);
 
     monkey_business.to_string()
@@ -219,7 +211,7 @@ pub fn day_11_part_2(input: &'static str) -> String {
         .map(|monkey| monkey.divisible_by)
         .product::<u128>();
 
-    for idx in 0..10000 {
+    for _ in 0..10000 {
         handle_processed_input(&mut processed_input, false, baseline);
     }
 
