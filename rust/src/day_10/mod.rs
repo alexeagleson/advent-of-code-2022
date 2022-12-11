@@ -275,7 +275,7 @@ pub fn day_10_part_2(input: &'static str) -> String {
 
     crt.print_it();
 
-    "TBA".to_string()
+    "see printed output above".to_string()
 }
 
 #[cfg(test)]
